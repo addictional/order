@@ -1,0 +1,49 @@
+<div class="reason-and-sum" data-amount-base-sum="">
+    <div class="text">Заказ на сумму</div>
+    <div class="price">
+        <nobr><font>{{basePrice}}</font>
+            <i class="fa fa-rub"></i></nobr>
+    </div>
+</div>
+<div class="reason-and-sum" data-amount-delivery="0">
+    <div class="text">Стоимость доставки</div>
+    <div class="price">
+        <nobr><font>{{delivery}}</font> <i class="fa fa-rub"></i></nobr>
+    </div>
+</div>
+{{#bonusPoints}}
+<div class="reason-and-sum" data-amount-used-points="0">
+    <div class="text">Использовано баллов</div>
+    <div class="price color-red">
+        <nobr><font>{{bonusPoints}}</font> <i class="fa fa-rub"></i></nobr>
+    </div>
+</div>
+{{/bonusPoints}}
+<div class="reason-and-sum" data-amount-discount-sum="">
+    <div class="text">Скидка</div>
+    <div class="price color-red">
+        <nobr>
+            <font>{{discount}}</font>
+            <i class="fa fa-rub"></i></nobr>
+    </div>
+</div>
+<div class="reason-and-sum total"
+     data-amount-sum="">
+    <div class="text / text-right">Итог: &nbsp;</div>
+    <div class="price">
+        <nobr>
+            <font data-price="" id="finalResultPrice">{{finalPrice}}</font>
+            <i class="fa fa-rub"></i></nobr>
+    </div>
+</div>
+{{#preCalculatedBns}}
+<div class="reason-and-sum given" data-wbl-giver-points>
+    <div class="text"></div>
+    <div class="price color-red">За этот заказ вы получите:
+        ~<font>{{preCalculatedBns}}</font>
+        баллов
+    </div>
+</div>
+<p class="wbl-text">Итоговое количество начисляемых баллов будет рассчитанно после
+    доставки и оплаты заказа</p>
+{{/preCalculatedBns}}

@@ -1,0 +1,427 @@
+<textarea id="description">
+        <div class="pvz-item-header" data-geo-lat="{{latitude}}" data-geo-long="{{longitude}}">{{parcelType}} {{address}}</div>
+        <div class="pvz_num">ПВЗ №{{number}}</div>
+        <div class="pvz-address">    {{address}}<br>    {{schedule}}</div>
+        <div class="pvz-delivery-date">
+            {{#dateDelivery}}
+            Предполагаемая дата доставки: {{dateDelivery}}
+            {{/dateDelivery}}
+        </div>
+        <div class="pvz-delivery-rules">
+            <div class="left-side">
+                <img src="{{logo}}" height="18"> Пункт вывоза {{parcelType}}
+            </div>
+            <div class="right-side">
+                {{#fitting}}
+                    <span class="pvz-fitting-icon"></span>
+                {{/fitting}}
+                {{#cashlessPayment}}
+                    <span class="pvz-payment-card-icon"></span>
+                {{/cashlessPayment}}
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+        {{^cashOnDelivery}}
+            <div style="color: red; margin-top: 7px;">Только онлайн предоплата</div>
+        {{/cashOnDelivery}}
+        <a href="javascript:void(0)" class="btn wbl-pzb-btn choosPVZ" data-index="{{parcelShopCode}}">Выбрать пункт выдачи</a>
+        <a href="javascript:void(0)" class="btn wbl-pzb-btn goto" >Показать на карте</a>
+</textarea>
+<textarea id="map">
+    <div class="wbl-modal-pickup / container">
+        <a href="javascript:void(0)" data-modal-close=""></a>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 / aside">
+            <div class="header">
+                <h2>Выберите пункт вывоза заказов</h2>
+                <div class="mobile-header">
+                    <a href="javascript:void(0)" data-modal-close=""></a>
+                    Пункты выдачи заказов
+                    <a href="javascript:void(0)" data-mobile-config=""></a>
+                </div>
+                <div class="switch-mode">
+
+                    <a href="javascript:void(0)" data-switch-mode="list">
+                        <svg width="15" height="10" viewBox="0 0 15 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 1H3" stroke="#1C45EB" stroke-width="2"></path>
+                            <path d="M0 5H3" stroke="#1C45EB" stroke-width="2"></path>
+                            <path d="M0 9H3" stroke="#1C45EB" stroke-width="2"></path>
+                            <path d="M6 1H15" stroke="#1C45EB" stroke-width="2"></path>
+                            <path d="M6 5H15" stroke="#1C45EB" stroke-width="2"></path>
+                            <path d="M6 9H15" stroke="#1C45EB" stroke-width="2"></path>
+                        </svg>
+                        Списком
+                    </a>
+                    <a href="javascript:void(0)" data-switch-mode="map" class="active">
+                        <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0)">
+                                <path d="M6.44191 16L2 14.7452V7.19208L6.44191 8.44691M6.44191 16V8.44691M6.44191 16L13.4303 13.5531M6.44191 8.44691L13.4303 6M13.4303 13.5531V6M13.4303 13.5531L18 16.1091V8.55598L13.4303 6" stroke="#1C45EB" stroke-width="1.5"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 12C9.5 12 13 6 13 3.6C13 1.61177 11.433 0 9.5 0C7.567 0 6 1.61177 6 3.6C6 6 9.5 12 9.5 12ZM9.5 5.4C10.4665 5.4 11.25 4.59411 11.25 3.6C11.25 2.60589 10.4665 1.8 9.5 1.8C8.5335 1.8 7.75 2.60589 7.75 3.6C7.75 4.59411 8.5335 5.4 9.5 5.4Z" fill="#1C45EB"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0">
+                                    <rect width="19" height="17" fill="white"></rect>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        На карте
+                    </a>
+
+                </div>
+                <div class="filter">
+                    <div class="text">Показать только:</div>
+                    <div class="mobile-text">Фильтры</div>
+
+                    <input type="checkbox" id="modal-filter-payment-card" value="Y">
+                    <label for="modal-filter-payment-card" class="check-label">Оплата картой</label>
+
+                    <input type="checkbox" id="modal-filter-fitting" value="Y">
+                    <label for="modal-filter-fitting" class="check-label">С примеркой</label>
+
+                    <a href="javascript:void(0)" data-wbl-pvz-filter-apply="" class="wbl-mobile-filter-apply">Применить</a>
+                </div>
+            </div>
+            <div class="placemark-layer" style="height: 653px;">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 / center" >
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+</textarea>
+<textarea id="order-info" >
+        <div class="reason-and-sum" data-amount-base-sum="">
+            <div class="text">Заказ на сумму</div>
+            <div class="price">
+                <nobr><font>{{basePrice}}</font>
+                    <i class="fa fa-rub"></i></nobr>
+            </div>
+        </div>
+        <div class="reason-and-sum" data-amount-delivery="0">
+            <div class="text">Стоимость доставки</div>
+            <div class="price">
+                <nobr><font>{{delivery}}</font> <i class="fa fa-rub"></i></nobr>
+            </div>
+        </div>
+        {{#bonusPoints}}
+        <div class="reason-and-sum" data-amount-used-points="0">
+            <div class="text">Использовано баллов</div>
+            <div class="price color-red">
+                <nobr><font>{{bonusPoints}}</font> <i class="fa fa-rub"></i></nobr>
+            </div>
+        </div>
+        {{/bonusPoints}}
+        <div class="reason-and-sum" data-amount-discount-sum="">
+            <div class="text">Скидка</div>
+            <div class="price color-red">
+                <nobr>
+                    <font>{{discount}}</font>
+                    <i class="fa fa-rub"></i></nobr>
+            </div>
+        </div>
+        <div class="reason-and-sum total"
+             data-amount-sum="">
+            <div class="text / text-right">Итог: &nbsp;</div>
+            <div class="price">
+                <nobr>
+                    <font data-price="" id="finalResultPrice">{{finalPrice}}</font>
+                    <i class="fa fa-rub"></i></nobr>
+            </div>
+        </div>
+        {{#preCalculatedBns}}
+        <div class="reason-and-sum given" data-wbl-giver-points>
+            <div class="text"></div>
+            <div class="price color-red">За этот заказ вы получите:
+                ~<font>{{preCalculatedBns}}</font>
+                баллов
+            </div>
+        </div>
+        <p class="wbl-text">Итоговое количество начисляемых баллов будет рассчитанно после
+            доставки и оплаты заказа</p>
+        {{/preCalculatedBns}}
+</textarea>
+<textarea id="order-info-mobile">
+    <div class="reason-and-sum" data-amount-base-sum="19400">
+        <div class="text">Заказ на сумму</div>
+        <div class="price">
+            <nobr><font>{{basePrice}}</font> <i class="fa fa-rub"></i></nobr>
+        </div>
+    </div>
+    <div class="reason-and-sum" data-amount-delivery="0">
+        <div class="text">Стоимость доставки</div>
+        <div class="price">
+            <nobr><font>{{delivery}}</font> <i class="fa fa-rub"></i></nobr>
+        </div>
+    </div>
+    {{#bonusPoints}}
+    <div class="reason-and-sum" data-amount-used-points="0">
+        <div class="text">Использовано баллов</div>
+        <div class="price color-red">
+            <nobr><font>{{bonusPoints}}</font> <i class="fa fa-rub"></i></nobr>
+        </div>
+    </div>
+    {{/bonusPoints}}
+    <div class="reason-and-sum" data-amount-discount-sum="9956">
+        <div class="text">Скидка</div>
+        <div class="price color-red">
+            <nobr><font>{{discount}}</font>
+                <i class="fa fa-rub"></i></nobr>
+        </div>
+    </div>
+    <div class="reason-and-sum total" data-amount-sum="19400">
+        <div class="text / text-right">Итог: &nbsp;</div>
+        <div class="price">
+            <nobr>
+                <font>{{finalPrice}}</font>
+                <i class="fa fa-rub"></i></nobr>
+        </div>
+    </div>
+</textarea>
+<textarea id="card-template">
+    <div class="wbl-block-second">
+
+        <div class="cart-layer">
+            <div class="header">lady &amp; gentlemen CITY</div>
+            <div class="cart-num">{{number}}</div>
+            <div class="cart-type">У ВАС: <span class="golden">{{STATUS}} КАРТА {{BNS_AVAILABLE}} </span>
+            </div>
+            <div class="range-result">
+                <div class="text">Использовать баллов:</div>
+                <div class="input-layer">
+                    <input type="number" class="wbl-range-input" value="0" name="wbl-bonus-points-vis">
+                </div>
+            </div>
+            <div class="wbl-range-wrapper">
+                <input id="wbl-range" name="RANGE"/>
+                <div
+                        style="display: flex; flex-direction: row; justify-content: space-between; margin: 0 -25px;">
+                    <small>Баллов</small>
+                    <small>Баллов</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</textarea>
+<textarea id="first-step">
+    <div class="form-group ">
+        <div class="block-left">Имя *</div>
+        <div class="block-right">
+            <div class="inpur-block">
+                <input type="text" class="form-control" placeholder="Имя" name="order-name-input" id="order-name-input" value="{{name}}">
+            </div>
+        </div>
+    </div>
+    <div class="form-group ">
+        <div class="block-left">Электронная почта *</div>
+        <div class="block-right">
+            <div class="inpur-block">
+                <input type="text" class="form-control" placeholder="E-mail" name="order-email-input" id="order-email-input" value="{{email}}" {{attribute}}>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="block-left">Телефон *</div>
+        <div class="block-right">
+            <div class="inpur-block">
+                <input type="text" class="form-control" placeholder="+7 (___) ___-__-__" name="order-tel-input" value="{{phone}}">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="block-left">Населенный пункт *</div>
+        <div class="block-right">
+            <div class="inpur-block">
+                <select id="city-selector" >
+                    {{#city}} <option selected >{{city}}</option>{{/city}}
+                </select>
+                <a href="javascript:void(0)" class="clear-select2-value" id='clear-city-selector'>×</a>
+            </div>
+        </div>
+    </div>
+</textarea>
+
+
+<textarea id="delivery-type">
+    <div class="block-left">СПОСОБ ДОСТАВКИ *</div>
+    <div class="block-right radio-block">
+    {{#TODOOR}}
+    <div class="inpur-block " data-delivery-method="TODOOR">
+        <input {{#tCheck}} checked {{/tCheck}} type="radio" name="delivery-method" id="delivery-method-TODOOR" value="TODOOR" />
+        <label for="delivery-method-TODOOR" class="check-label">Курьером</label>
+    </div>
+    {{/TODOOR}}
+    {{#PICKUP}}
+    <div class="inpur-block " data-delivery-method="PICKUP">
+        <input {{#pCheck}} checked {{/pCheck}} type="radio" name="delivery-method" id="delivery-method-PICKUP" value="PICKUP"/>
+        <label for="delivery-method-PICKUP" class="check-label">Самовывоз из ПВЗ</label>
+    </div>
+    {{/PICKUP}}
+    </div>
+</textarea>
+
+<textarea id="delivery-type-preload">
+    <div class="block-left" ><span class="preload-filler preload-filler-height"></span></div>
+    <div class="block-right radio-block">
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+</textarea>
+
+<textarea id="delivery-todoor">
+    <div>
+        <div class="form-group">
+            <div class="block-left">АДРЕС ДОСТАВКИ *</div>
+            <div class="block-right">
+                <div class="inpur-block">
+                    <select id="street-input" >
+                        {{#street}}<option selected> {{street}}</option>{{/street}}
+                    </select>
+                        <a href="javascript:void(0)" id="street-todoor-clear-button" class="clear-select2-value">×</a>
+                </div>
+
+                <div class="flex-just">
+                    <div class="inpur-block inline-3">
+                        <input {{^build}}style="border-color: red;"{{/build}} type="text" {{#build}} value="{{build}}" {{/build}} class="form-control " placeholder="Дом *" name="house-input" id="house-input">
+                    </div>
+                    <div class="inpur-block inline-3">
+                        <input type="text" {{#block}} value="{{block}}" {{/block}} class="form-control" placeholder="Корпус" name="corpus-input" id="corpus-input">
+                    </div>
+                    <div class="inpur-block inline-3">
+                        <input type="text" {{#flat}} value="{{flat}}"  {{/flat}} class="form-control valid" placeholder="Квартира" name="flat-input" id="flat-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="block-left">Индекс *</div>
+            <div class="block-right">
+                <div class="inpur-block">
+                    <input type="text" class="form-control valid" name="zip-of-city" id="zip-of-city" value="{{index}}" placeholder="Индекс">
+                </div>
+            </div>
+        </div>
+    </div>
+</textarea>
+<textarea id="delivery-todoor-preload">
+    <div class="form-group">
+        <div class="block-left"><span class="preload-filler preload-filler-height">АДРЕС ДОСТАВКИ *</span></div>
+            <div class="block-right">
+                <div class="inpur-block">
+                    <div class="inpur-block preload-filler preload-filler-height preload-filler-margin-center">pidr</div>
+                </div>
+
+                <div class="preload-filler-address-row">
+                    <div class="preload-filler-first">
+                        <div>3123123</div>
+                    </div>
+                    <div class="preload-filler-second">
+                        <div>3123123</div>
+                    </div>
+                    <div class="preload-filler-third">
+                        <div>квартира 51</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="block-left"><span class="preload-filler preload-filler-height">Индекс *</span></div>
+            <div class="block-right">
+                <div class="inpur-block">
+                    <div class="inpur-block preload-filler preload-filler-height preload-filler-margin-center">pidr</div>
+                </div>
+            </div>
+        </div>
+</textarea>
+<textarea  id="delivery-info-message-wrapper">
+    <div class="block-left">УСЛОВИЯ ДОСТАВКИ</div>
+    <div class="block-right">
+        <ul class="wbl-ul-block" id="delivery-info-message">
+            {{#cashlessOnly}}<li>Для <b>оформления</b> заказа вам необходимо оплатить полную стоимость товаров.{{/cashlessOnly}}
+                <br>Доставка курьерской компанией {{company}} бесплатная при покупке на сумму более {{threshold}} рублей, иначе стоимость доставки – {{price}} рублей.
+                <br>Ориентировочная дата доставки - {{date}}.
+                <br>Обращаем ваше внимание, что примерка и частичный отказ при онлайн-предоплате невозможны.
+                <br>Доставка осуществляется 6 дней в неделю, кроме воскресенья, c 9 до 18 часов по договоренности с курьером.
+            </li>
+        </ul>
+    </div>
+</textarea>
+
+<textarea id="delivery-intervals">
+    <div class="block-left">ВРЕМЯ ДОСТАВКИ *</div>
+    <div class="block-right">
+        <div class="inpur-block">
+            <select class="form-control valid" name="delievery-date-input" id="delievery-date-input" aria-invalid="false">
+                <option value="" selected="" disabled="">-- Выберите дату доставки --</option>
+                {{#date}}
+                    <option value="{{value}}">{{text}}</option>
+                {{/date}}
+            </select><label id="delievery-date-input-error" class="wbl-input-error" for="delievery-date-input" style="display: none;"></label>
+        </div>
+        <div class="inpur-block">
+            <select class="form-control valid" name="delievery-time-input" id="delievery-time-input" aria-invalid="false">
+                <option value="" selected="" disabled="">-- Выберите интервал доставки --</option>
+                {{#time}}
+                    <option value="{{value}}">{{text}}</option>
+                {{/time}}
+            </select><label id="delievery-time-input-error" class="wbl-input-error" for="delievery-time-input" style="display: none;"></label>
+        </div>
+    </div>
+</textarea>
+
+<textarea id="payment-methods">
+    <div class="block-left">СПОСОБ ОПЛАТЫ *</div>
+     <div class="block-right / radio-block">
+      {{#methods}}
+         <div class="inpur-block " data-payment-type="{{value}}">
+             <input type="radio" {{#selected}}checked{{/selected}} name="payment-option" id="payment-option-{{value}}" value="{{value}}" required="">
+             <label for="payment-option-{{value}}" class="check-label">{{text}}</label>
+         </div>
+      {{/methods}}
+
+     </div>
+</textarea>
+
+<textarea id="add-bonus-card">
+    <div class="block-left">БОНУСНАЯ КАРТА *</div>
+     <div class="block-right">
+
+        <div class="inpur-block " data-ghost-bonus-card>
+            <input type="text" class="form-control"
+                   placeholder="0000000000000000000"
+                   id="bonus-card-to-points"  />
+            <a href="javascript:void(0)"
+               class="btn btn-primary wbl-btn-bonus-card-apply">Применить</a>
+            <input type="hidden"
+                   name="bonus-card-to-points" />
+            <div id="bonus-card-to-points-response"></div>
+            <p>
+                <b>Внимание! Возможно только накопление!</b>
+                    <br/>
+                    <br/>
+                    Для оплаты баллами, пожалуйста, <a
+                            href="/cardactivation/bonus-card/"><u>активируйте
+                            Вашу бонусную карту</u></a> или, если карта уже
+                    активирована, <a href="/personal/"><u>авторизуйтесь</u></a>
+                    .
+            </p>
+        </div>
+        {{#show}}
+        <div class="radio-block">
+            <div class="inpur-block">
+                <input type="checkbox" name="i-want-to-get-a-bonus-card"
+                       id="chqq" value="Y"/>
+                <label for="chqq" class="check-label" id="dontHavVart">У меня нет
+                    бонусной карты, я хочу ее получить</label>
+                <div class="text-layer text-center">
+                    Ознакомиться с правилами бонусной программы Вы
+                    можете <a href="/loyalty/">здесь</a>.
+                </div>
+            </div>
+        </div>
+        {{/show}}
+    </div>
+</textarea>

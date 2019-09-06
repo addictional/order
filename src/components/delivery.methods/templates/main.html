@@ -1,0 +1,15 @@
+<div class="block-left">СПОСОБ ДОСТАВКИ *</div>
+<div class="block-right radio-block">
+    {{#TODOOR}}
+    <div class="inpur-block " data-delivery-method="TODOOR">
+        <input {{#tCheck}} checked {{/tCheck}} type="radio" name="delivery-method" id="delivery-method-TODOOR" value="TODOOR" />
+        <label for="delivery-method-TODOOR" class="check-label">Курьером</label>
+    </div>
+    {{/TODOOR}}
+    {{#PICKUP}}
+    <div class="inpur-block " data-delivery-method="PICKUP">
+        <input {{#pCheck}} checked {{/pCheck}} type="radio" name="delivery-method" id="delivery-method-PICKUP" value="PICKUP"/>
+        <label for="delivery-method-PICKUP" class="check-label">Самовывоз из ПВЗ</label>
+    </div>
+    {{/PICKUP}}
+</div>

@@ -1,0 +1,35 @@
+<div class="reason-and-sum" data-amount-base-sum="19400">
+    <div class="text">Заказ на сумму</div>
+    <div class="price">
+        <nobr><font>{{basePrice}}</font> <i class="fa fa-rub"></i></nobr>
+    </div>
+</div>
+<div class="reason-and-sum" data-amount-delivery="0">
+    <div class="text">Стоимость доставки</div>
+    <div class="price">
+        <nobr><font>{{delivery}}</font> <i class="fa fa-rub"></i></nobr>
+    </div>
+</div>
+{{#bonusPoints}}
+<div class="reason-and-sum" data-amount-used-points="0">
+    <div class="text">Использовано баллов</div>
+    <div class="price color-red">
+        <nobr><font>{{bonusPoints}}</font> <i class="fa fa-rub"></i></nobr>
+    </div>
+</div>
+{{/bonusPoints}}
+<div class="reason-and-sum" data-amount-discount-sum="9956">
+    <div class="text">Скидка</div>
+    <div class="price color-red">
+        <nobr><font>{{discount}}</font>
+            <i class="fa fa-rub"></i></nobr>
+    </div>
+</div>
+<div class="reason-and-sum total" data-amount-sum="19400">
+    <div class="text / text-right">Итог: &nbsp;</div>
+    <div class="price">
+        <nobr>
+            <font>{{finalPrice}}</font>
+            <i class="fa fa-rub"></i></nobr>
+    </div>
+</div>

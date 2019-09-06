@@ -1,0 +1,12 @@
+<div class="block-left">СПОСОБ ОПЛАТЫ *</div>
+<div class="block-right / radio-block">
+    {{#methods}}
+    <div class="inpur-block " data-payment-type="{{value}}">
+        <input type="radio"
+               {{#selected}} checked {{/selected}}
+        name="payment-option" id="payment-option-{{value}}" value="{{value}}" required="">
+        <label for="payment-option-{{value}}" class="check-label">{{text}}</label>
+    </div>
+    {{/methods}}
+
+</div>

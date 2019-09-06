@@ -1,0 +1,38 @@
+<div class="block-left">БОНУСНАЯ КАРТА *</div>
+<div class="block-right">
+
+    <div class="inpur-block " data-ghost-bonus-card>
+        <input type="text" class="form-control"
+               placeholder="0000000000000000000"
+               id="bonus-card-to-points"  />
+        <a href="javascript:void(0)"
+           class="btn btn-primary wbl-btn-bonus-card-apply">Применить</a>
+        <input type="hidden"
+               name="bonus-card-to-points" />
+        <div id="bonus-card-to-points-response"></div>
+        <p>
+            <b>Внимание! Возможно только накопление!</b>
+            <br/>
+            <br/>
+            Для оплаты баллами, пожалуйста, <a
+                href="/cardactivation/bonus-card/"><u>активируйте
+            Вашу бонусную карту</u></a> или, если карта уже
+            активирована, <a href="/personal/"><u>авторизуйтесь</u></a>
+            .
+        </p>
+    </div>
+    {{#show}}
+    <div class="radio-block">
+        <div class="inpur-block">
+            <input type="checkbox" name="i-want-to-get-a-bonus-card"
+                   id="chqq" value="Y"/>
+            <label for="chqq" class="check-label" id="dontHavVart">У меня нет
+                бонусной карты, я хочу ее получить</label>
+            <div class="text-layer text-center">
+                Ознакомиться с правилами бонусной программы Вы
+                можете <a href="/loyalty/">здесь</a>.
+            </div>
+        </div>
+    </div>
+    {{/show}}
+</div>

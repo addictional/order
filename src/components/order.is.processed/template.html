@@ -1,0 +1,237 @@
+<div class="container-fluid / wbl-make-order-wrapper">
+    <div class="row">
+
+        <div class="container">
+            <div class="row" data-loading-layer="">
+
+                <div class="col-xs-12">
+                    {{#order}}
+                    <h1>ВЫ УСПЕШНО ОФОРМИЛИ ЗАКАЗ № {{id}} от {{date}}</h1>
+                    {{/order}}
+                </div>
+
+
+                <div class="col-xs-12 col-sm-12 col-md-8 / wbl-make-order-aside-left">
+                    <div class="wbl-block-first">
+
+                        <div class="confirm">
+                            <div class="header-text">
+                                Мы выслали вам письмо с информацией о вашем заказе. Если вы заметили, что
+                                указали что-то неправильно, то вы можете с нами связаться одним из способов и
+                                уточнить информацию:
+                                <br>
+                                Тел.: <a href="tel:+78005512527">8 (800) 551 25 27</a><br>
+                                E-mail: <a href="mailto:hotline@lgcity.ru">hotline@lgcity.ru</a><br>
+                                Чат на сайте: <a href="https://lgcity.ru/" target="_blank">https://lgcity.ru/</a><br>
+                                Telegram: <a href="http://t.me/ladygentleman_bot">@ladygentleman_bot</a>
+                            </div>
+
+                            <div class="header-h2">ТОВАРЫ В ЗАКАЗЕ</div>
+
+                            <div class="wbl-basket-items-layer">
+                                <div class="wbl-basket-item">
+                                    {{#items}}
+                                    <div class="item-layer row" id="item-{{index}}">
+                                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 / wbl-basket-item-img image-loader-border">
+                                            <a data-item-image="{{img}}" href="">
+                                                    <div class="image-loader-wheel">
+                                                        <div class="spin reel">
+                                                            <span class="dot d_top"></span>
+                                                            <span class="dot d_right"></span>
+                                                            <span class="dot d_center"></span>
+                                                            <span class="dot d_left"></span>
+                                                            <span class="dot d_bottom"></span>
+                                                        </div>
+                                                    </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 / wbl-basket-item-desc">
+                                            <div class="row">
+
+                                                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 / names">
+                                                    <p class="name">
+                                                        <a href="{{path}}" target="_blank">{{brand}}</a>
+                                                    </p>
+                                                    <p class="section-name">{{section}}</p>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 / price price-discount">
+                                                    <p class="current-price">{{totalPrice}}<i class="fa fa-rub"></i></p>
+                                                    <p class="old-price">{{basePrice}}<i class="fa fa-rub"></i></p></div>
+                                                <div class="clearfix hidden-xs hidden-sm visible-md visible-lg"></div>
+
+                                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 / props-wrapper">
+                                                    <label>
+                                                        <span class="prop-name">Размер :</span> {{size}}</label>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 / props-wrapper">
+                                                    <label>
+                                                        <span class="prop-name">Цвет :</span> {{color}}</label>
+                                                </div>
+
+                                                <div class="clearfix"></div>
+
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                    {{/items}}
+                                </div>
+                            </div>
+
+                            <div class="header-h2">КОНТАКТЫ</div>
+
+                            <div class="order-props-list">
+                                <div class="prop-row">
+                                    <div class="prop-name">Получатель:</div>
+                                    <div class="prop-val">{{name}}</div>
+                                </div>
+                                <div class="prop-row">
+                                    <div class="prop-name">Тел.:</div>
+                                    <div class="prop-val">{{phone}}</div>
+                                </div>
+                                <div class="prop-row">
+                                    <div class="prop-name">E-mail:</div>
+                                    <div class="prop-val">{{email}}</div>
+                                </div>
+                            </div>
+                            <div class="header-h2">ДОСТАВКА И ОПЛАТА</div>
+                            {{#order}}
+                            <div class="order-props-list">
+                                <div class="prop-row">
+                                    <div class="prop-name">Адрес:</div>
+                                    <div class="prop-val">{{address}}</div>
+                                </div>
+                                <div class="prop-row">
+                                    <div class="prop-name">Дата:</div>
+                                    <div class="prop-val">{{date}}</div>
+                                </div>
+                                <div class="prop-row">
+                                    <div class="prop-name">Комментарий:</div>
+                                    <div class="prop-val">
+                                    </div>
+                                </div>
+                                <div class="prop-row total">
+                                    <div class="prop-name">Стоимость заказа:</div>
+                                    <div class="prop-val">{{price}} <i class="fa fa-rub"></i></div>
+                                </div>
+                                <div class="prop-row">
+                                    <div class="prop-name">Стоимость доставки:</div>
+                                    <div class="prop-val">
+                                        {{delivery}} <i class="fa fa-rub"></i>
+                                    </div>
+                                </div>
+                                <div class="prop-row total">
+                                    <div class="prop-name">К оплате:</div>
+                                    <div class="prop-val red-color">{{totalPrice}}<i class="fa fa-rub"></i></div>
+                                </div>
+                            </div>
+                            {{/order}}
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 / wbl-make-order-aside-right">
+
+                    <div class="confirm">
+
+                        <div class="wbl-block-first">
+
+                            <div class="header-h2">АККАУНТ</div>
+                            <!-- Не авторизован, обнаружен -->
+                            {{^userAuthorized }}
+                                {{#userEmailExist}}
+                            <div>
+                                <p class="wbl-dark-text">
+                                    Мы обнаружили, что пользователь с
+                                    логином addictional2013@gmail.com уже зарегистрирован в
+                                    нашем интернет-магазине и добавили данный заказ в историю заказов этого
+                                    пользователя.
+                                </p>
+                                <p class="wbl-dark-text">
+                                    Авторизуйтесь, чтобы увидеть историю своих заказов.
+                                </p>
+                                <p class="wbl-dark-text">
+                                    Просто введите пароль от логина addictional2013@gmail.com                                    </p>
+                                <form action="/auth/" id="conform-to-auth">
+                                    <input type="hidden" class="form-control" name="email" value="addictional2013@gmail.com">
+                                    <input type="hidden" name="type" value="auth">
+
+                                    <label class="wbl-input-label">Пароль</label>
+                                    <input type="password" class="form-control" name="info-password-input">
+                                    <div class="text-right">
+                                        <a href="/auth/?forget=Y" class="link">Забыли пароль?</a>
+                                    </div>
+                                    <div class="wbl-brn-layer">
+                                        <a href="javascript:void(0)" class="btn btn-primary btn-block">Авторизоваться</a>
+                                    </div>
+                                </form>
+                            </div>
+                            <script type="text/javascript">
+                                $(document).ready(function () {
+                                    function tryAuth () {
+                                        $.ajax({
+                                            url: '/ajax/ajax.php',
+                                            data: ({
+                                                type: 'auth',
+                                                email: $('#conform-to-auth [name="email"]').val(),
+                                                'info-password-input': $(
+                                                    '#conform-to-auth [name="info-password-input"]').val(),
+                                                'info-remember-user': 'Y',
+                                            }),
+                                            async: false,
+                                            type: 'POST',
+                                            dataType: 'html',
+                                            success: function (ResultAjax) {
+                                                window.location.href = '/personal/data/'
+                                            },
+                                        })
+                                    }
+
+                                    $('#conform-to-auth').on('submit', function (e) {
+                                        tryAuth()
+                                        e.preventDefault()
+                                        return false
+                                    })
+                                    $('#conform-to-auth .btn').on('click', function (e) {
+                                        tryAuth()
+                                        e.preventDefault()
+                                        return false
+                                    })
+                                })
+                            </script>
+                                {{/userEmailExist}}
+                            {{/userAuthorized}}
+                            {{#userAuthorized}}
+                            <div>
+                                <p class="wbl-dark-text">
+                                    Чтобы увидеть историю своих заказов, перейдите в личный кабинет.
+                                </p>
+                                <div class="wbl-brn-layer">
+                                    <a href="/personal/" class="btn btn-primary btn-block">Личный
+                                        кабинет</a>
+                                </div>
+                                <p class="wbl-text">
+                                    Ознакомиться с правилами бонусной программы вы можете <a href="#" target="_blank">здесь</a>.
+                                </p>
+                            </div>
+                            {{/userAuthorized}}
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="clearfix" style="padding-bottom: 300px;"></div>
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

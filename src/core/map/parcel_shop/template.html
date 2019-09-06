@@ -1,0 +1,29 @@
+<div class="pvz-item-header" data-geo-lat="{{latitude}}" data-geo-long="{{longitude}}">{{parcelType}} {{address}}</div>
+<div class="pvz_num">ПВЗ №{{number}}</div>
+<div class="pvz-address">    {{address}}<br>    {{schedule}}</div>
+<div class="pvz-delivery-date">
+    {{#dateDelivery}}
+    Предполагаемая дата доставки: {{dateDelivery}}
+    {{/dateDelivery}}
+</div>
+<div class="pvz-delivery-rules">
+    <div class="left-side">
+        <img src="{{logo}}" height="18"> Пункт вывоза {{parcelType}}
+    </div>
+    <div class="right-side">
+        {{#fitting}}
+        <span class="pvz-fitting-icon"></span>
+        {{/fitting}}
+        {{#cashlessPayment}}
+        <span class="pvz-payment-card-icon"></span>
+        {{/cashlessPayment}}
+    </div>
+    <div class="clearfix">
+
+    </div>
+</div>
+{{^cashOnDelivery}}
+<div style="color: red; margin-top: 7px;">Только онлайн предоплата</div>
+{{/cashOnDelivery}}
+<a href="javascript:void(0)" class="btn wbl-pzb-btn choosPVZ" data-index="{{index}}">Выбрать пункт выдачи</a>
+<a href="javascript:void(0)" class="btn wbl-pzb-btn goto" >Показать на карте</a>

@@ -1,0 +1,34 @@
+<div>
+    <div class="form-group">
+        <div class="block-left">АДРЕС ДОСТАВКИ *</div>
+        <div class="block-right">
+            <div class="inpur-block">
+                <select id="street-input" >
+                    {{#street}}<option selected> {{street}}</option>{{/street}}
+                </select>
+                <a href="javascript:void(0)" id="street-todoor-clear-button" class="clear-select2-value">×</a>
+            </div>
+
+            <div class="flex-just">
+                <div class="inpur-block inline-3">
+                    <input {{^build}}style="border-color: red;"{{/build}} type="text" {{#build}} value="{{build}}" {{/build}} class="form-control " placeholder="Дом *" name="house-input" id="house-input">
+                </div>
+                <div class="inpur-block inline-3">
+                    <input type="text" {{#block}} value="{{block}}" {{/block}} class="form-control" placeholder="Корпус" name="corpus-input" id="corpus-input">
+                </div>
+                <div class="inpur-block inline-3">
+                    <input type="text" {{#flat}} value="{{flat}}"  {{/flat}} class="form-control valid" placeholder="Квартира" name="flat-input" id="flat-input">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="block-left">Индекс *</div>
+        <div class="block-right">
+            <div class="inpur-block">
+                <input type="text" class="form-control valid" name="zip-of-city" id="zip-of-city" value="{{index}}" placeholder="Индекс">
+            </div>
+        </div>
+    </div>
+</div>
